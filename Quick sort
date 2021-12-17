@@ -1,0 +1,44 @@
+#include<stdio.h>
+int arr[]={1,2,3,6,15,10,1,21};// loi sap xep khi co 2 phan tu giong nhau
+int n=sizeof(arr)/sizeof(arr[0]);
+
+
+void Quicksort(int arr[],int l,int r)
+{	
+	if(l<r)
+	{
+		int m=(l+r)/2;
+		int mid=arr[m];
+		int temporary;
+		int i=l;
+		int j=r;
+		while(i<j)
+		{
+			while(arr[i]<mid) i++;
+			while(arr[j]>mid) j--;
+			if(i<j)
+			{
+				temporary=arr[i];
+				arr[i]=arr[j];
+				arr[j]=temporary;
+			}			
+				i++;
+				j--;			
+		}
+		if(l<j) Quicksort(arr,l,j);
+		if(i<r) Quicksort(arr,i,r);
+	}
+	else printf("error while sorting!");
+}
+
+
+	
+
+int main()
+{
+	Quicksort(arr,0,n-1);
+	printf("ket qua sap xep bang phuong phap Quick sort:\n");
+	for(int i=0;i<n;i+=1)
+	printf("%3d",arr[i]);
+	return 0;
+}
