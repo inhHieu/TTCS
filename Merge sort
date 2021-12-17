@@ -31,22 +31,15 @@ void mSort(int a[],int l, int r)
 
 int main()
 {
-	#ifndef ONLINE_JUDGE
-    freopen ("input.txt", "r", stdin);
-    freopen ("output.txt", "w", stdout);
-	#endif
-	int b,c;cin>>b>>c;
-	int B[b],C[c];
-	for(int i=0;i<b;i++) cin>>B[i];
-	for(int i=0;i<c;i++) cin>>C[i];
-//-----------------
-	int arr[b+c];
-	for(int i=0;i<(b+c);i++)
-	{
-		if(i<c) arr[i]=B[i];
-		else arr[i]=C[i];
-	}
-
-	mSort(arr,0,(b+c)-1);
-	for(int i=0;i<(b+c)-1;i++) cout<<arr[i]<<" ";
+	int n;
+	cout<<"Nhap tong chu so day so \n";
+	cin>>n;
+	int arr[n];
+	cout<<"Nhap day so can sap xep \n";
+	for(int i=0;i<n;i++) cin>>arr[i];
+	cout<<"Day so da nhap: \n";
+	for(int i=0;i<n;i++) cout<<arr[i]<<" ";
+	cout<<"\n";
+	mSort(arr,0,n);
+	for(int i=0;i<n;i++) cout<<arr[i]<<" ";
 }
