@@ -1,0 +1,52 @@
+#include<iostream>
+#include <bits/stdc++.h>
+using namespace std;
+
+void merge(int a[],int l,int m,int r)
+{
+	int b[100]; int c[100];
+	int k,i,j;
+	for(i=l;i<=m;i++) b[i]=a[i];
+	for( j=m+1;j<=r;j++) c[j]=a[j];
+	b[m+1]=c[r+1]=100;
+	i=l;j=m+1;k=l;
+	while(k<=r)
+	{
+		if(b[i]<c[j]) a[k++]=b[i++];
+		else a[k++]=c[j++];
+	}
+}
+
+void mSort(int a[],int l, int r)
+{
+	if(l<r)
+	{
+		int m=(l+r)/2;
+		mSort(a,l,m);
+		mSort(a,m+1,r);
+		merge(a,l,m,r);
+	}
+}
+
+
+int main()
+{
+	#ifndef ONLINE_JUDGE
+    freopen ("input.txt", "r", stdin);
+    freopen ("output.txt", "w", stdout);
+	#endif
+	int b,c;cin>>b>>c;
+	int B[b],C[c];
+	for(int i=0;i<b;i++) cin>>B[i];
+	for(int i=0;i<c;i++) cin>>C[i];
+//-----------------
+	int arr[b+c];
+	for(int i=0;i<(b+c);i++)
+	{
+		if(i<c) arr[i]=B[i];
+		else arr[i]=C[i];
+	}
+
+	mSort(arr,0,(b+c)-1);
+	for(int i=0;i<(b+c)-1;i++) cout<<arr[i]<<" ";
+}
