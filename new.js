@@ -45,7 +45,6 @@ async function quick_Sort(arr,p,r){
 
 
 //merge sort
-let delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 // Make the main function async
 async function  Merge( arr, l, mid , r)
 {
@@ -58,25 +57,41 @@ async function  Merge( arr, l, mid , r)
 			b[k++]=arr[i++];
 		else
 			b[k++]=arr[j++];
+            draw(array);
+               await delay(20);	
 	}
-	for(;i<=mid;i++) {b[k++]=arr[i];}	//nhap phan tu con du neu co
-	for(;j<=r;j++) {b[k++]=arr[j];}
+	for(;i<=mid;i++) b[k++]=arr[i];	//nhap phan tu con du neu co
+	for(;j<=r;j++) b[k++]=arr[j];
 //-----------						 chuyen sang mang chinh
 	for(k=l;k<=r;k++) arr[k]=b[k];
 }
 
-void MergeSort( arr, l, r)
+function MergeSort( arr, l, r)
 {
 	if(l<r)
 	{
 		let mid=(l+r)/2;
+        color(arr,mid);
 		MergeSort(arr,l,mid);
-		MergeSort(arr,mid+1,r);
-		Merge(arr,l,mid,r);
+		// MergeSort(arr,mid+1,r);
+		// Merge(arr,l,mid,r);
 	}
 
 }
-
+function color(arr,mid) { // Just simplified it for this demo. Nothing essential.
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    for(let i = 0; i < mid; i++){
+        context.fillStyle = 'rgb(' + Math.floor(255 - 2 * mid+1) + ', ' +
+        Math.floor(255 - 20 * mid+1) + ', 0)';
+        context.fillRect(10 + 22*i,canvas.height-20,12,-array[i]*5);
+        
+    }console.log(context.fillStyle)
+    for(let i = mid; i < arr.length; i++){
+        context.fillStyle = 'rgb(' + Math.floor(255 - 20 * mid-1) + ', ' +
+        Math.floor(255 - 2 * mid+1) + ', 0)';
+        context.fillRect(10 + 22*i,canvas.height-20,12,-array[i]*5);
+    }
+}
 
 
 
@@ -89,7 +104,7 @@ void MergeSort( arr, l, r)
 function draw(array) { // Just simplified it for this demo. Nothing essential.
     context.clearRect(0, 0, canvas.width, canvas.height);
     for(let i = 0; i < array.length; i++){
-        context.fillRect(10 + 12*i,canvas.height-20,7,-array[i]*5);
+        context.fillRect(10 + 12*i,canvas.height-20,6,-array[i]*5);
     }
 }
 
