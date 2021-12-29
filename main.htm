@@ -11,9 +11,9 @@
     <body>
         <div id="mySidebar" class="sidebar">
             <a href="javascript:void(0)" class="closebtn" onclick="ToggleNav()">&times;</a>
-            <a href="#"><span>Q</span>    Quick sort</a>
-            <a href="#"><span>M</span>     Merge sort</a>
-            <a href="#"><span>H</span>     Heap sort</a>
+            <a id = "QS" class="btn" onclick="QS()"> Q   <span>uick sort</span> </a>
+            <a id = "MS" class="btn" onclick="MS()"> M  <span>erge sort</span> </a>
+            <a id = "HS" class="btn" onclick="HS()"> H   <span>eap sort </span>  </a>
         </div>
           
         <div id="main" onclick="closeNav()">
@@ -28,7 +28,8 @@
           <i class="fa fa-pause" aria-hidden="true"></i>
         </div>
 
-      <script src="new.js"></script>
+      <!-- <script src="main.js"></script> -->
+      <script src="main.js"></script>
     </body>
         <!-- <div id="header"><img src="flower.jpg"></div>
         <div id="barrel">
