@@ -3,6 +3,11 @@
     place-content: center;
 }
 
+body{  
+  background-color: #111;
+}
+
+
 .sidebar {
     height: 100%;
     width: 80px; 
@@ -10,24 +15,38 @@
     z-index: 1; 
     top: 0;
     left: 0;
-    background-color: #111; 
+    background:  rgba(255,255,255,0) ;
     overflow-x: hidden;
-    padding-top: 60px; 
-    transition: 0.5s; 
+    padding-top: 60px;
+    transition: 0.5s;
+    &:hover{
+      background:  rgba(255,255,255,.1) ;
+      & a{
+      color: rgba(69,202,255,1);
+      }
+    }
+    
   }
   
   .sidebar a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
-    color: #818181;
+    color: rgb(8, 72, 97);
     display: block;
     transition: 0.3s;
     white-space: nowrap;
+    cursor: pointer;
+    & span{
+      margin-left: -5px;
+      display: none;
+      transition: display 0.5s;
+      // color:rgba(255,255,255,0);
+    }
   }
   
   .sidebar a:hover {
-    color: #f1f1f1;
+    background-color: rgb(255,27,107);
   }
   
   .sidebar .closebtn {
@@ -53,11 +72,8 @@
   
   #main {
         @include center();
-    margin-left: 80px;
-    margin-right: 80px;
     height: 97vh;
     canvas{
-        border: thin rgb(0, 0, 0) solid;
         
     }
   }
@@ -80,8 +96,3 @@
     .sidebar {padding-top: 15px;}
     .sidebar a {font-size: 18px;}
   }
-  iframe{
-    border: none;
-    width:100%;
-    height: 100%;
-}
