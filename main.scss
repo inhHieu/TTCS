@@ -7,6 +7,11 @@ body{
   background-color: #111;
 }
 
+.running{
+  background-color: rgb(255,27,107);
+  color: rgba(69,202,255,1) !important;
+}
+
 
 .sidebar {
     height: 100%;
@@ -21,61 +26,105 @@ body{
     transition: 0.5s;
     &:hover{
       background:  rgba(255,255,255,.1) ;
-      & a{
+      & button{
       color: rgba(69,202,255,1);
       }
     }
     
   }
   
-  .sidebar a {
-    padding: 8px 8px 8px 32px;
+  .sidebar button {
+    padding: 10px 0;
     text-decoration: none;
     font-size: 25px;
     color: rgb(8, 72, 97);
     display: block;
+    width: 100%;
+    text-align: center;
     transition: 0.3s;
     white-space: nowrap;
-    cursor: pointer;
+    border: none;
+    background-color: rgba(255,27,107,0);
     & span{
       margin-left: -5px;
       display: none;
       transition: display 0.5s;
       // color:rgba(255,255,255,0);
     }
+    &:hover {
+      background-color: rgba(255,27,107,1);
+    }
+    &:focus{
+      background-color: rgba(255,27,107,1);
+      color: rgba(69,202,255,1);
+  box-shadow: none !important;
+      // & ul li{
+      //   display: block !important;
+      // }
+    }
   }
   
-  .sidebar a:hover {
-    background-color: rgb(255,27,107);
-  }
   
-  .sidebar .closebtn {
+  .sidebar .togglebtn {
     position: absolute;
-    top: 0;
-    left: -50px;
+    top: 10px;
+    left: -30px;
+    display: block;
     font-size: 36px;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
     margin-left: 50px;
+    color: rgba(69,202,255,1);
+    &:hover{
+      background-color: rgba(255,255,255,.1)
+    }
   }
   
-  .openbtn {
-    font-size: 20px;
-    cursor: pointer;
-    background-color: #111;
-    color: white;
-    padding: 10px 15px;
-    border: none;
+
+  ul li{
+    // display: none;
+    list-style: none;
+    font-size: 18px;
+    color: rgba(69,202,255,1);
+    padding: 10px 0;
+    margin-left: -20px;
   }
   
-  .openbtn:hover {
-    background-color: #444;
+  .info{
+    display:inline-block;
+    width: 20px; height: 20px;
   }
-  
+  #red{
+    background-color: red;
+  }
+  #yellow{
+    background-color: #FEEE00;
+  }
+  #blue{
+    background-color: #59f0ff;
+  }
+  #green{
+    background-color: #49E303;
+  }
+  #pink{
+    background-color: #FF1493;
+  }
+  #orange{
+    background-color: #ff3503;
+  }
+  #QList,#MList,#HList{
+    display: none
+  }
+
   #main {
         @include center();
     height: 97vh;
-    canvas{
+    // canvas{
         
-    }
+    // }
   }
 
   .panel{
@@ -83,7 +132,7 @@ body{
     top: 50%; right: 5px;
     transform: translate(0%,-50%);
     width: 80px;
-    height: 100px;
+    height: 100%;
     color: black;
     font-size: large;
     display: flex;
