@@ -5,15 +5,35 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Sort Algorithms</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     </head>
     <body>
         <div id="mySidebar" class="sidebar">
-            <a href="javascript:void(0)" class="closebtn" onclick="ToggleNav()">&times;</a>
-            <a id = "QS" class="btn" onclick="QS()"> Q   <span>uick sort</span> </a>
-            <a id = "MS" class="btn" onclick="MS()"> M  <span>erge sort</span> </a>
-            <a id = "HS" class="btn" onclick="HS()"> H   <span>eap sort </span>  </a>
+            <a href="javascript:void(0)" class="togglebtn" onclick="ToggleNav()">&times;</a>
+            <button id = "QS" class="btn" onclick=" QS()"> Q   <span>uick sort</span> </button>
+            <!-- <ul>
+              <li> <div class="info"></div> this is some useful info</li>
+              <li> <div class="info"></div> this is some useful info</li>
+              <li> <div class="info"></div> this is some useful info</li>
+            </ul> -->
+            <button id = "MS" class="btn" onclick=" MS()"> M  <span>erge sort</span> </button>
+            <!-- <ul>
+              <li> <div class="info"></div> this is some useful info</li>
+              <li> <div class="info"></div> this is some useful info</li>
+              <li> <div class="info"></div> this is some useful info</li>
+            </ul> -->
+            <button id = "HS" class="btn" onclick=" HS()"> H   <span>eap sort </span>  </button>
+            <!-- <ul>
+              <li> <div class="info"></div> this is some useful info</li>
+              <li> <div class="info"></div> this is some useful info</li>
+              <li> <div class="info"></div> this is some useful info</li>
+            </ul> -->
         </div>
           
         <div id="main" onclick="closeNav()">
@@ -21,24 +41,33 @@
 
 
 
-          <!-- <iframe name="tg1" src="sort1.htm"></iframe> -->                   
+                            
         </div>
         <div class="panel">
-          <i class="fa fa-play" aria-hidden="true"></i>
-          <i class="fa fa-pause" aria-hidden="true"></i>
+          <!-- <i class="fa fa-play" aria-hidden="true"></i>
+          <i class="fa fa-pause" aria-hidden="true"></i> -->
+          <ul id="QList">
+            <li> <div data-bs-toggle="tooltip" id="blue" class="info" title="Unsorted Elements"></div> </li>
+            <li> <div data-bs-toggle="tooltip" id="green" class="info" title="Sorted Elements"></div> </li>
+            <li> <div data-bs-toggle="tooltip" id="pink" class="info" title="Partition Elements"></div> </li>
+            <li> <div data-bs-toggle="tooltip" id="yellow" class="info" title="Competition Elements"></div> </li>
+            <li> <div data-bs-toggle="tooltip" id="red" class="info" title="Swap Posittion"></div> </li>
+            <li> <div data-bs-toggle="tooltip" id="orange" class="info" title="All two or three Partition Element, Competition Element and Swap Posittion at once"></div> </li>
+          </ul>
+          <ul id="MList">
+            <li> <div data-bs-toggle="tooltip" id="blue" class="info" title="Unsorted Elements"></div> </li>
+            <li> <div data-bs-toggle="tooltip" id="green" class="info" title="Sorted Elements"></div> </li>
+            <li> <div data-bs-toggle="tooltip" id="orange" class="info" title="Elements from sub-array"></div> </li>
+            
+          </ul>
+          <ul id="HList">
+            <li> <div data-bs-toggle="tooltip" id="blue" class="info" title="Unsorted Elements"></div> </li>
+            <li> <div data-bs-toggle="tooltip" id="green" class="info" title="Sorted Elements"></div> </li>
+            </ul>
         </div>
 
-      <!-- <script src="main.js"></script> -->
+
       <script src="main.js"></script>
     </body>
-        <!-- <div id="header"><img src="flower.jpg"></div>
-        <div id="barrel">
-            <div id="left"> 
-                <h4 style="line-height: 200%;">Tin Tức</h4>
-                <a href="Tinkt.htm" target="tg1">Tin Kinh Tế</a> <br>
-                <a href="Tinct.htm" target="tg1">Tin Chính Trị</a>
-             </div>
-            <div id="right"> <iframe name="tg1" src="Tinkt.htm"></iframe> </div>
-        </div> -->
      
 </html>
