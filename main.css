@@ -2,6 +2,11 @@ body {
   background-color: #111;
 }
 
+.running {
+  background-color: #ff1b6b;
+  color: #45caff !important;
+}
+
 .sidebar {
   height: 100%;
   width: 80px;
@@ -20,52 +25,102 @@ body {
   background: rgba(255, 255, 255, 0.1);
 }
 
-.sidebar:hover a {
+.sidebar:hover button {
   color: #45caff;
 }
 
-.sidebar a {
-  padding: 8px 8px 8px 32px;
+.sidebar button {
+  padding: 10px 0;
   text-decoration: none;
   font-size: 25px;
   color: #084861;
   display: block;
+  width: 100%;
+  text-align: center;
   -webkit-transition: 0.3s;
   transition: 0.3s;
   white-space: nowrap;
-  cursor: pointer;
+  border: none;
+  background-color: rgba(255, 27, 107, 0);
 }
 
-.sidebar a span {
+.sidebar button span {
   margin-left: -5px;
   display: none;
   -webkit-transition: display 0.5s;
   transition: display 0.5s;
 }
 
-.sidebar a:hover {
+.sidebar button:hover {
   background-color: #ff1b6b;
 }
 
-.sidebar .closebtn {
+.sidebar button:focus {
+  background-color: #ff1b6b;
+  color: #45caff;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
+
+.sidebar .togglebtn {
   position: absolute;
-  top: 0;
-  left: -50px;
+  top: 10px;
+  left: -30px;
+  display: block;
   font-size: 36px;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
   margin-left: 50px;
+  color: #45caff;
 }
 
-.openbtn {
-  font-size: 20px;
-  cursor: pointer;
-  background-color: #111;
-  color: white;
-  padding: 10px 15px;
-  border: none;
+.sidebar .togglebtn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
-.openbtn:hover {
-  background-color: #444;
+ul li {
+  list-style: none;
+  font-size: 18px;
+  color: #45caff;
+  padding: 10px 0;
+  margin-left: -20px;
+}
+
+.info {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+}
+
+#red {
+  background-color: red;
+}
+
+#yellow {
+  background-color: #FEEE00;
+}
+
+#blue {
+  background-color: #59f0ff;
+}
+
+#green {
+  background-color: #49E303;
+}
+
+#pink {
+  background-color: #FF1493;
+}
+
+#orange {
+  background-color: #ff3503;
+}
+
+#QList, #MList, #HList {
+  display: none;
 }
 
 #main {
@@ -82,7 +137,7 @@ body {
   -webkit-transform: translate(0%, -50%);
           transform: translate(0%, -50%);
   width: 80px;
-  height: 100px;
+  height: 100%;
   color: black;
   font-size: large;
   display: -webkit-box;
