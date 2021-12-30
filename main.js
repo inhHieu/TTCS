@@ -107,7 +107,7 @@ function QuickDraw(arr,r,j,t) {
             context.fillRect(10 + 12*i,canvas.height-20,6,-arr[i]*5);
         }
         else if( i == t){
-            context.fillStyle = '#59f0ff';
+            context.fillStyle = 'red';
             context.fillRect(10 + 12*i,canvas.height-20,6,-arr[i]*5);
         }
         else if(i == j){
@@ -122,11 +122,13 @@ function QuickDraw(arr,r,j,t) {
     }
 }
 
-
-let QS_btn = document.getElementById("#QS");
+ 
+let QS_btn = document.getElementById("QS");
+let QList = document.getElementById("QList");
 async function QS(){
-    // QS_btn.disabled = true;
-    QS_btn.style.color="red";
+    QList.style.display="block";
+    MList.style.display="none";
+    HList.style.display="none";
     draw(array);
     await QuickSort(array,0,size-1);
     draw(array);
@@ -202,8 +204,12 @@ function MergeDraw(arr,k,e,j,l){
 }
 
 
-let MS_btn = document.getElementById("#MS");
+let MS_btn = document.getElementById("MS");
+let MList = document.getElementById("MList");
 async function MS(){
+    MList.style.display="block";
+    HList.style.display="none";
+    QList.style.display="none";
     draw(array);
     await MergeSort(array,0,size-1);
     draw(array);
@@ -294,8 +300,12 @@ function HeapDraw(arr,r,j,t,hs) {
 }
 
 
-let HS_btn = document.getElementById("#HS");
-async function HS(){
+let HS_btn = document.getElementById("HS");
+let HList = document.getElementById("HList");
+async function HS(){    
+    HList.style.display="block";
+    MList.style.display="none";
+    QList.style.display="none";
     draw(array);
     await HeapSort(array,size);
     draw(array);
@@ -303,3 +313,29 @@ async function HS(){
         array[i] = array_clone[i];
     }
 }
+// ------------------------------------------
+// ------------------------------------------
+
+function running(){
+    let btn =document.querySelectorAll(".btn");
+    for( let i = 0; i < btn.length; i++){
+        btn[i].classList.remove("running");
+    }
+        btn[i].classList.add("running");
+}
+
+
+
+
+
+
+
+
+
+// ------------------------------------------
+// -------------Bootstrap--------------------
+
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+  return new bootstrap.Tooltip(tooltipTriggerEl)
+})
