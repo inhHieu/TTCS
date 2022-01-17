@@ -362,3 +362,22 @@ var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggl
 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
   return new bootstrap.Tooltip(tooltipTriggerEl)
 })
+
+// ------------------------------------------
+// ----------------Pause---------------------
+function pause(milliseconds) {
+    const date = Date.now();
+    let currentDate = null;
+    do {
+      currentDate = Date.now();
+    } while (currentDate - date < milliseconds);
+  }
+function play(milliseconds) {
+    const date = Date.now();
+    let currentDate = null;
+    do {
+      currentDate = Date.now();
+    } while (currentDate - date < milliseconds);
+  }
+
+
