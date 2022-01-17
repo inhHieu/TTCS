@@ -37,30 +37,39 @@ canvas.width = CANVAS_WIDTH;
 canvas.height = CANVAS_HEIGHT;
 // context.fillStyle = '#ff3503';
 
-let array = [25,88,20,60,8,41,32,39,69,38,18,54,17,42,82,96,62,90,23,65,52,84,11,48,21,80,50,27,58,51,7,2,5,94,6,75,43,45,19,92,1,61,66,44,13,53,46,55,91,83,28,63,59,47,24,36,10,70,3,85,74,31,93,86,12,40,26,33,77,34,97,81,78,29,15,49,57,56,35,87,16,71,4,30,68,37,79,72,22,89,76,73,67,64,95,14,9];
-let array_clone = [25,88,20,60,8,41,32,39,69,38,18,54,17,42,82,96,62,90,23,65,52,84,11,48,21,80,50,27,58,51,7,2,5,94,6,75,43,45,19,92,1,61,66,44,13,53,46,55,91,83,28,63,59,47,24,36,10,70,3,85,74,31,93,86,12,40,26,33,77,34,97,81,78,29,15,49,57,56,35,87,16,71,4,30,68,37,79,72,22,89,76,73,67,64,95,14,9];
+// let array = [25,88,20,60,8,41,32,39,69,38,18,54,17,42,82,96,62,90,23,65,52,84,11,48,21,80,50,27,58,51,7,2,5,94,6,75,43,45,19,92,1,61,66,44,13,53,46,55,91,83,28,63,59,47,24,36,10,70,3,85,74,31,93,86,12,40,26,33,77,34,97,81,78,29,15,49,57,56,35,87,16,71,4,30,68,37,79,72,22,89,76,73,67,64,95,14,9];
+// let array_clone = [25,88,20,60,8,41,32,39,69,38,18,54,17,42,82,96,62,90,23,65,52,84,11,48,21,80,50,27,58,51,7,2,5,94,6,75,43,45,19,92,1,61,66,44,13,53,46,55,91,83,28,63,59,47,24,36,10,70,3,85,74,31,93,86,12,40,26,33,77,34,97,81,78,29,15,49,57,56,35,87,16,71,4,30,68,37,79,72,22,89,76,73,67,64,95,14,9];
+let array = [44,29,16,20,26,92,12,95,33,62,26,73,88,53];
+let array_clone = [44,29,16,20,26,92,12,95,33,62,26,73,88,53];
 let size = array.length;
 
 
-function draw(arr) {
+function Completeraw(arr,j) {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.fillStyle = "#111";
+    context.fillRect(0, 0, canvas.width, canvas.height);
+    for(let i = 0; i < arr.length; i++){ 
+        if(i <= j){
+            context.fillStyle = '#49E303';
+            context.fillRect(200 + 62*i,canvas.height-20,40,-arr[i]*5);
+        }
+        else{
+            context.fillStyle = '#59f0ff';
+            context.fillRect(200 + 62*i,canvas.height-20,40,-arr[i]*5);
+        }
+    }
+}
+function CloneDraw(arr,hex) {
     context.clearRect(0, 0, canvas.width, canvas.height);
     context.fillStyle = "#111";
     context.fillRect(0, 0, canvas.width, canvas.height);
     for(let i = 0; i < arr.length; i++){            
-        context.fillStyle = '#49E303';
-        context.fillRect(10 + 12*i,canvas.height-20,6,-arr[i]*5);
+        context.fillStyle = ""+hex;
+        context.fillRect(200 + 62*i,canvas.height-20,40,-arr[i]*5);
+            // x, y, witt, height
     }
 }
-function CloneDraw(arr) {
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    context.fillStyle = "#111";
-    context.fillRect(0, 0, canvas.width, canvas.height);
-    for(let i = 0; i < arr.length; i++){            
-        context.fillStyle = '#59f0ff';
-        context.fillRect(10 + 12*i,canvas.height-20,6,-arr[i]*5);
-    }
-}
-CloneDraw(array_clone);
+CloneDraw(array_clone,"#59f0ff");
 // ------------------------------------------
 // --------------Quick Sort------------------
 
@@ -68,27 +77,24 @@ async function QuickSort(arr,p,r){
     if (p<r) {	    
         let t= p;
         let i			  
-           for(i = p; i < r; i++)
-            if (arr[i]<= arr[r])
-            {  
+           for(i = p; i < r; i++){
+                QuickDraw(arr,r,i,t);
+                await delay(1000);
+                if (arr[i]<= arr[r]){  
                 let temp = arr[t];
                     arr[t]=arr[i];  
                     arr[i]=temp;
-                    QuickDraw(arr,r,i,t);
-                    await delay(10);
-                t++;
-                QuickDraw(arr,r,i,t);
-                await delay(100);
-            }
+                t++;               
+            } 
+           }            
             let temp = arr[t]; 
                 arr[t]=arr[r];
                 arr[r]=temp;
                 QuickDraw(arr,r,i,t);
-                await delay(100);         
+                await delay(700);         
            await QuickSort(arr, p, t-1); 
            await QuickSort(arr, t+1, r);
        }
-    return arr;
 }
 
 
@@ -100,24 +106,24 @@ function QuickDraw(arr,r,j,t) {
         
         if(i==t&&i==j || i==r&&i==t || i==r&&i==j){
             context.fillStyle = '#ff3503';
-            context.fillRect(10 + 12*i,canvas.height-20,6,-arr[i]*5);
+            context.fillRect(200 + 62*i,canvas.height-20,40,-arr[i]*5);
         }
         else if(i == r){
             context.fillStyle = '#FF1493';
-            context.fillRect(10 + 12*i,canvas.height-20,6,-arr[i]*5);
+            context.fillRect(200 + 62*i,canvas.height-20,40,-arr[i]*5);
         }
         else if( i == t){
             context.fillStyle = 'red';
-            context.fillRect(10 + 12*i,canvas.height-20,6,-arr[i]*5);
+            context.fillRect(200 + 62*i,canvas.height-20,40,-arr[i]*5);
         }
         else if(i == j){
             context.fillStyle = '#FEEE00';
-            context.fillRect(10 + 12*i,canvas.height-20,6,-arr[i]*5);
+            context.fillRect(200 + 62*i,canvas.height-20,40,-arr[i]*5);
         }
         
         else{
         context.fillStyle = '#59f0ff';
-        context.fillRect(10 + 12*i,canvas.height-20,6,-arr[i]*5);
+        context.fillRect(200 + 62*i,canvas.height-20,40,-arr[i]*5);
         }
     }
 }
@@ -129,9 +135,15 @@ async function QS(){
     QList.style.display="block";
     MList.style.display="none";
     HList.style.display="none";
-    draw(array);
+    CloneDraw(array,"#59f0ff");
+    await delay(2000)
     await QuickSort(array,0,size-1);
-    draw(array);
+    // CloneDraw(array,"#49E303");
+    
+    for(let i=0; i < size; i++){
+        Completeraw(array,i);
+        await delay(100);
+    }
     for(let i=0; i < size; i++){
         array[i] = array_clone[i];
     }
@@ -164,7 +176,7 @@ async function Merge(arr,l,mid,r){
         arr[e]=b[e];    
         console.log(k,i,j,l);
         MergeDraw(arr,k,i,j,l);
-        await delay(50);
+        await delay(700);
     }
 }
 async function MergeSort( arr, l, r){
@@ -175,7 +187,6 @@ async function MergeSort( arr, l, r){
 		await MergeSort(arr,mid+1,r);
 		await Merge(arr,l,mid,r);
 	}
-
 }
 
 
@@ -186,19 +197,19 @@ function MergeDraw(arr,k,e,j,l){
     for(let i = 0; i < arr.length; i++){        
         if(i<k && i != e && i != j && i < l){
             context.fillStyle = '#49E303';
-            context.fillRect(10 + 12*i,canvas.height-20,6,-arr[i]*5);
+            context.fillRect(200 + 62*i,canvas.height-20,40,-arr[i]*5);
         }
         else if(  i >= l && i <k){
             context.fillStyle = '#ff3503';
-            context.fillRect(10 + 12*i,canvas.height-20,6,-arr[i]*5);
+            context.fillRect(200 + 62*i,canvas.height-20,40,-arr[i]*5);
         }
         else if( i >= l && i <k){
             context.fillStyle = '#ff3503';
-            context.fillRect(10 + 12*i,canvas.height-20,6,-arr[i]*5);
+            context.fillRect(200 + 62*i,canvas.height-20,40,-arr[i]*5);
         }        
         else{
         context.fillStyle = '#59f0ff';
-        context.fillRect(10 + 12*i,canvas.height-20,6,-arr[i]*5);
+        context.fillRect(200 + 62*i,canvas.height-20,40,-arr[i]*5);
         }
     }
 }
@@ -210,9 +221,13 @@ async function MS(){
     MList.style.display="block";
     HList.style.display="none";
     QList.style.display="none";
-    draw(array);
+    CloneDraw(array,"#59f0ff");
+    await delay(2000)
     await MergeSort(array,0,size-1);
-    draw(array);
+    for(let i=0; i < size; i++){
+        Completeraw(array,i);
+        await delay(100);
+    }
     for(let i=0; i < size; i++){
         array[i] = array_clone[i];
     }
@@ -228,20 +243,21 @@ async function Heapify( arr, n, i){
 	let largest =i;
 	let l=i*2+1;
 	let r= i*2+2;
+    let largestTemp = largest;
+    HeapDraw(arr,largest,l,r,n,largestTemp);
+    await delay(2000);
 	if(l<n && arr[l] > arr[largest]) largest =l;
 	if(r<n && arr[r] > arr[largest]) largest =r;
-    console.log(arr[largest]+'is laegest');
-    HeapDraw(arr,largest,l,r,n);
-    await delay(50);
+    HeapDraw(arr,largest,l,r,n,largestTemp);
+    await delay(2000);
 	if(largest != i){
         let temp = arr[largest]; 
             arr[largest]=arr[i];
             arr[i]=temp;
-            console.log(arr[largest]+'large != i');
-
+            // console.log(arr[largest]+'large != i');
+        // HeapDraw(arr,largest,l,r,n,largestTemp);
+        // await delay(1000);
         await Heapify(arr,n,largest);
-        HeapDraw(arr,largest,l,r,n);
-        await delay(50);
 	}
 }
 async function BuildHeap( arr, n){
@@ -256,45 +272,55 @@ async function HeapSort(arr, n){
         let temp = arr[0]; 
             arr[0]=arr[heapsize-1];
             arr[heapsize-1]=temp;
-		heapsize--;
-        
+		heapsize--;        
 		await Heapify(arr,heapsize,0);
 	}
     console.log(arr)
 }
 
 
-
-function HeapDraw(arr,r,j,t,hs) { 
+//HeapDraw(arr,largest,l,r,n);
+function HeapDraw(arr,largest,l,r,hs,largestTemp) { 
+    let root =0;
     context.clearRect(0, 0, canvas.width, canvas.height);
     context.fillStyle = "#111";
     context.fillRect(0, 0, canvas.width, canvas.height);
     for(let i = 0; i < arr.length; i++){
         
-        if(i==t&&i==j || i==r&&i==t || i==r&&i==j){
-            context.fillStyle = '#ff3503';
-            context.fillRect(10 + 12*i,canvas.height-20,6,-arr[i]*5);
+        if(i == root ){
+            context.fillStyle = 'red';
+            context.fillRect(200 + 62*i,canvas.height-20,40,-arr[i]*5);
+        }else if( i> root &&  i <= root*2+2 ){
+            context.fillStyle = 'yellow';
+            context.fillRect(200 + 62*i,canvas.height-20,40,-arr[i]*5);
+        }else if( i> root*2+2 &&  i <= (root*2+2)*2+2 ){
+            context.fillStyle = 'blue';
+            context.fillRect(200 + 62*i,canvas.height-20,40,-arr[i]*5);
+        }else if( i> (root*2+2)*2+2 &&  i <= ((root*2+2)*2+2)*2+2 ){
+            context.fillStyle = 'green';
+            context.fillRect(200 + 62*i,canvas.height-20,40,-arr[i]*5);
         }
-        else if(i == r){
+//-------------------------
+        if(i == largest){
             context.fillStyle = '#FF1493';
-            context.fillRect(10 + 12*i,canvas.height-20,6,-arr[i]*5);
+            context.fillRect(200 + 62*i,canvas.height-20,40,-arr[i]*5);
         }
-        else if(i == t && i < hs){
-            context.fillStyle = '#ff3503';
-            context.fillRect(10 + 12*i,canvas.height-20,6,-arr[i]*5);
+        else if(i == largestTemp){
+            context.fillStyle = '#59f0ff';
+            context.fillRect(200 + 62*i,canvas.height-20,40,-arr[i]*5);           
         }
-        else if(i == j && i < hs){
-            context.fillStyle = '#FEEE00';
-            context.fillRect(10 + 12*i,canvas.height-20,6,-arr[i]*5);
+        else if(i == r && i < hs){
+            context.fillStyle = '#59f0ff';
+            context.fillRect(200 + 62*i,canvas.height-20,40,-arr[i]*5);
+        }
+        else if(i == l && i < hs){
+            context.fillStyle = '#59f0ff';
+            context.fillRect(200 + 62*i,canvas.height-20,40,-arr[i]*5);
         }
         else 
         if(i >= hs){
             context.fillStyle = '#49E303';
-            context.fillRect(10 + 12*i,canvas.height-20,6,-arr[i]*5);
-        }        
-        else{
-        context.fillStyle = '#59f0ff';
-        context.fillRect(10 + 12*i,canvas.height-20,6,-arr[i]*5);
+            context.fillRect(200 + 62*i,canvas.height-20,40,-arr[i]*5);
         }
     }
 }
@@ -306,9 +332,13 @@ async function HS(){
     HList.style.display="block";
     MList.style.display="none";
     QList.style.display="none";
-    draw(array);
+    CloneDraw(array,"#59f0ff");
+    await delay(2000);
     await HeapSort(array,size);
-    draw(array);
+    for(let i=0; i < size; i++){
+        Completeraw(array,i);
+        await delay(100);
+    }
     for(let i=0; i < size; i++){
         array[i] = array_clone[i];
     }
@@ -323,13 +353,6 @@ function running(){
     }
         btn[i].classList.add("running");
 }
-
-
-
-
-
-
-
 
 
 // ------------------------------------------
