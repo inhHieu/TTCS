@@ -44,6 +44,7 @@ let array_clone = [44,29,16,20,26,92,12,95,33,62,26,73,88,53];
 let size = array.length;
 
 
+
 function Completeraw(arr,j) {
     context.clearRect(0, 0, canvas.width, canvas.height);
     context.fillStyle = "#111";
@@ -379,5 +380,16 @@ function play(milliseconds) {
       currentDate = Date.now();
     } while (currentDate - date < milliseconds);
   }
+
+// ------------------------------------------
+// ---------------READTXT--------------------
+
+function getarray(){
+    var x = document.getElementById("input").value;    
+    array = array_clone  = $('#input').val().split(",");
+    CloneDraw(array_clone,"#59f0ff");
+    console.log(x)
+    console.log(array+"  array")
+}
 
 
