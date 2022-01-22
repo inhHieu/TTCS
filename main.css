@@ -121,6 +121,7 @@ ul li {
 
 #QList, #MList, #HList {
   display: none;
+  padding-bottom: 50px;
 }
 
 #main {
@@ -147,9 +148,77 @@ ul li {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
   place-items: center;
+}
+
+.pause, .play, input {
+  position: absolute;
+  color: white;
+  cursor: pointer;
+}
+
+.pause {
+  top: 10%;
+}
+
+.play {
+  top: 15%;
+}
+
+input {
+  width: 100%;
+  top: 25%;
+  color: #111;
+}
+
+input::-webkit-input-placeholder {
+  color: white;
+}
+
+input:-ms-input-placeholder {
+  color: white;
+}
+
+input::-ms-input-placeholder {
+  color: white;
+}
+
+input::placeholder {
+  color: white;
+}
+
+input:focus {
+  width: 500%;
+  right: 30%;
+  -webkit-transform-origin: bottom right;
+          transform-origin: bottom right;
+}
+
+input:focus::-webkit-input-placeholder {
+  text-align: center;
+  color: #5e5e5e;
+  font-size: .7em;
+}
+
+input:focus:-ms-input-placeholder {
+  text-align: center;
+  color: #5e5e5e;
+  font-size: .7em;
+}
+
+input:focus::-ms-input-placeholder {
+  text-align: center;
+  color: #5e5e5e;
+  font-size: .7em;
+}
+
+input:focus::placeholder {
+  text-align: center;
+  color: #5e5e5e;
+  font-size: .7em;
 }
 
 @media screen and (max-height: 450px) {
